@@ -3,7 +3,7 @@ import google.generativeai as genai
 from gtts import gTTS
 
 # --- AI SETUP ---
-genai.configure(api_key="AIzaSyBx0JcxfZA8cs2eSwA1uWclTp5K-jpYOqg")
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 APP_PASSWORD = "UP16" 
 
 # --- LOCK ---
@@ -27,7 +27,7 @@ topic = st.text_input("Topic Likhein:", placeholder="Ex: Futuristic Farming Robo
 
 if st.button("🚀 Start Production"):
     if topic:
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-1.5-flash')
         with st.status("AI Kaam kar raha hai..."):
             st.subheader("🎭 AI Avatar Design")
             res = model.generate_content(f"Describe a unique AI avatar for: {topic}. No real humans.")
